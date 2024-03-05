@@ -10,6 +10,7 @@
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   background-color: undefined;
+  padding-top: 5rem;
 }
 
 @keyframes bounce {
