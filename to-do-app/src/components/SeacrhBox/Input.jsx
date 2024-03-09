@@ -22,20 +22,22 @@ export default function Input({ OnNewItem }) {
 
   return (
     <>
-      <div>
+      <div className=".input-container">
         <input
           className="input-container"
           type="text"
           placeholder="Enter the Task.."
           onChange={handleTask}
           value={task}
+          required
         />
-        
+
         <input
           type="date"
           className="date"
           onChange={handleDate}
           value={date}
+          required
         />
         <button onClick={HandleSubmitChange} className="button-80">
           Add Task
