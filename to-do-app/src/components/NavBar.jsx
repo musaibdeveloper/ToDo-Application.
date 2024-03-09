@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function NavBar() {
+export default function NavBar({ OnNewAddition }) {
+  const [task, settask] = useState();
+  const [date, setduedate] = useState();
+
+  const Handletask = (event) => {
+    settask(event.target.value);
+  };
+
+  const handledatechange = (event) => {
+    setduedate(event.target.value);
+  };
+
+  const handleaddbuttonClicked = () => {
+    OnNewAddition(task, date);
+    setduedate("");
+    settask("");
+  };
+
   return (
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-6">
-          <input type="text" placeholder="Enter your Task Here..." />
+    <div className="container text-center">
+      <div className="row">
+        <div className="col-6">
+          <input
+            type="text"
+            placeholder="Enter your Task Here..."
+            value={task}
+            onChange={Handletask}
+          />
         </div>
-        <div class="col-4">
-          <input type="date" />
+        <div className="col-4">
+          <input type="date" value={date} onChange={handledatechange} />
         </div>
-        <div class="col-2">
-          <button type="button" class="btn btn-success">
+        <div className="col-2">
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={handleaddbuttonClicked}
+          >
             Add
           </button>
         </div>
