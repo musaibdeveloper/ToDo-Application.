@@ -1,44 +1,44 @@
 import React, { useState } from "react";
+import { IoIosAddCircle } from "react-icons/io";
+
 
 export default function NavBar({ OnNewAddition }) {
-  const [task, settask] = useState();
-  const [date, setduedate] = useState();
+  const [task, settask] = useState("");
+  const [date, setdate] = useState("");
 
   const Handletask = (event) => {
     settask(event.target.value);
   };
 
-  const handledatechange = (event) => {
-    setduedate(event.target.value);
+  const HandledateChage = (event) => {
+    setdate(event.target.value);
   };
 
-  const handleaddbuttonClicked = () => {
+  const HandleAddbuttonClicked = () => {
     OnNewAddition(task, date);
-    setduedate("");
-    settask("");
   };
+
 
   return (
     <div className="container text-center">
       <div className="row">
-        <div className="col-6">
+        <div className="col-4">
           <input
             type="text"
             placeholder="Enter your Task Here..."
-            value={task}
             onChange={Handletask}
           />
         </div>
         <div className="col-4">
-          <input type="date" value={date} onChange={handledatechange} />
+          <input type="date" onChange={HandledateChage} />
         </div>
         <div className="col-2">
           <button
             type="button"
             className="btn btn-success"
-            onClick={handleaddbuttonClicked}
+            onClick={HandleAddbuttonClicked}
           >
-            Add
+            <IoIosAddCircle />
           </button>
         </div>
       </div>

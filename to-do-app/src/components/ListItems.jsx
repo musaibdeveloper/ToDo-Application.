@@ -1,21 +1,23 @@
 import React from "react";
+import { MdDeleteSweep } from "react-icons/md";
+
 import "./ListItem.css";
 
-export default function ListItems({ renderList, ondeleteclick }) {
+export default function ListItems({ todoItems, onDeleteClick }) {
   return (
     <>
       <div className="items-container">
-        {renderList.map((item, index) => (
+        {todoItems.map((item, index) => (
           <div key={index} className="list-item">
             <li>
-              {item.task} - {item.duedate}
+              {item.name} - {item.duedate}
             </li>
             <button
               type="button"
               className="btn btn-danger"
-              onClick={() => ondeleteclick(renderList)}
+              onClick={() => onDeleteClick(item.name)}
             >
-              Delete
+              <MdDeleteSweep />
             </button>
           </div>
         ))}

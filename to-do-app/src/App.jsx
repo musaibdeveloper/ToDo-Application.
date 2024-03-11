@@ -1,44 +1,44 @@
 import React, { useState } from "react";
 import "./App.css";
-import Logo from "./components/Logo";
+import AppName from "./components/AppName.jsx";
 import NavBar from "./components/NavBar";
 import ListItems from "./components/ListItems";
+import Welcome from "./components/Welcome.jsx";
 
 function App() {
   const InitailValues = [
     {
-      task: "Learn",
-      duedate : "7/10/2024"
-    }, 
-
+      name: "Learn",
+      duedate: "7/10/2024",
+    },
   ];
 
   const [todoItems, settodoItems] = useState(InitailValues);
 
   const HandleAddnewItems = (itemName, itemDueDate) => {
-    const addmoreitems = [
-      ...InitailValues,
+    const additems = [
+      ...todoItems,
       {
-        task: itemName,
+        name: itemName,
         duedate: itemDueDate,
       },
     ];
-    settodoItems(addmoreitems);
+    settodoItems(additems);
   };
 
-  const handledelete = (renderList) => {
-    const upadtedtask = renderList.filter((task)=> task.task !== task);
-    settodoItems(upadtedtask);
+  const HandleDeleteItem = (todoitemName) => {
+    const updatedList = todoItems.filter((item) => item.name !== todoitemName);
+    settodoItems(updatedList);
   };
-
   return (
     <center className="todo-container">
       <React.Fragment>
-        <Logo />
+        <AppName />
         <NavBar OnNewAddition={HandleAddnewItems}></NavBar>
+        {todoItems.length === 0 && <Welcome />}
         <ListItems
-          renderList={todoItems}
-          ondeleteclick={handledelete}
+          todoItems={todoItems}
+          onDeleteClick={HandleDeleteItem}
         ></ListItems>
       </React.Fragment>
     </center>
